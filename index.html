@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>財富自我循環實戰方案</title>
-    <!-- 引入 Tailwind CSS (用於快速排版) -->
+    <!-- 引入 Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- 引入 FontAwesome 圖示 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -38,7 +38,6 @@
             margin: 12px auto 0;
             border-radius: 2px;
         }
-        /* 隱藏捲軸但可捲動 */
         ::-webkit-scrollbar { display: none; }
     </style>
 </head>
@@ -55,26 +54,52 @@
 
     <div class="max-w-md mx-auto p-5">
         
-        <!-- 圖片區塊 -->
+        <!-- 課程說明圖片區塊 -->
         <div class="mb-6 rounded-2xl shadow-xl overflow-hidden border-4 border-white">
             <img src="course-info.png" alt="財富自我循環實戰方案說明" class="w-full h-auto block">
         </div>
         
         <div class="bg-white p-6 rounded-2xl shadow-xl border-t-4 border-brand-gold relative overflow-hidden">
             
-            <!-- 使用者 LINE 資訊預覽 -->
+            <!-- 使用者 LINE 資訊預覽 (取得資料後顯示) -->
             <div id="profileBox" class="hidden flex items-center gap-4 bg-gray-50 p-4 rounded-xl mb-6">
                 <img id="profileImage" src="" alt="頭像" class="w-12 h-12 rounded-full border-2 border-brand-gold">
                 <div>
-                    <p class="text-xs text-gray-500">目前綁定 LINE 帳號</p>
+                    <p class="text-xs text-gray-500">已成功綁定 LINE 帳號</p>
                     <p id="profileName" class="font-bold text-brand-blue"></p>
                 </div>
             </div>
 
-            <h2 class="text-xl font-bold mb-5 text-center text-brand-blue">包班專用報名表</h2>
-            
-            <!-- 步驟一：表單區塊 -->
-            <form id="corpForm" class="space-y-4">
+            <!-- 🌟 步驟零：獨立的個資法授權同意頁面 🌟 -->
+            <div id="step-pdpa" class="space-y-4">
+                <h3 class="font-bold text-brand-blue text-lg mb-2 border-b pb-2">
+                    <i class="fas fa-shield-alt mr-2 text-brand-gold"></i>個人資料保護法告知及授權聲明
+                </h3>
+                
+                <div class="text-xs text-gray-600 space-y-2 h-48 overflow-y-auto bg-gray-50 p-3 rounded-lg border border-gray-200">
+                    <p>為辦理【財富自我循環實戰方案】課程報名及後續服務，本單位依據《個人資料保護法》第八條及第九條規定，向您告知下列事項：</p>
+                    <ol class="list-decimal pl-4 space-y-1">
+                        <li><strong>蒐集目的：</strong>辦理課程報名、身份識別、聯繫、學員管理及相關客戶服務。</li>
+                        <li><strong>個人資料類別：</strong>包含姓名、聯絡電話、電子信箱、公司名稱、單位名稱/代號、LINE 帳號識別碼 (User ID) 及大頭貼等。</li>
+                        <li><strong>利用期間、地區、對象及方式：</strong>於本單位營運期間及中華民國境內，以數位或實體等合理合法方式處理及利用。</li>
+                        <li><strong>當事人權利：</strong>您得依個資法第三條規定，向本單位請求查詢、閱覽、製給複製本、補充、更正、停止蒐集/處理/利用或刪除您的個人資料。</li>
+                        <li><strong>同意授權說明：</strong>點擊下方同意並授權後，系統將透過 LINE 取得您的基本個人檔案（含 LINE 帳號識別碼）以完成報名識別。若您不願提供，將無法完成本報名程序。</li>
+                    </ol>
+                </div>
+
+                <label class="flex items-start gap-2 pt-2 cursor-pointer">
+                    <input type="checkbox" id="agreeCheckbox" class="mt-1 w-5 h-5 text-brand-gold focus:ring-brand-gold rounded border-gray-300">
+                    <span class="text-sm text-gray-700 font-bold">我已詳閱並完全同意上述《個人資料保護法》告知事項，並授權本系統讀取必要之 LINE 個人檔案。</span>
+                </label>
+                
+                <button type="button" id="startAuthBtn" disabled class="w-full bg-gray-300 text-gray-500 font-bold text-lg py-4 rounded-xl shadow transition-all cursor-not-allowed mt-2">
+                    同意並授權，開始填寫報名表
+                </button>
+            </div>
+
+            <!-- 步驟一：正式報名表單 (預設隱藏) -->
+            <form id="corpForm" class="hidden space-y-4">
+                <h2 class="text-xl font-bold mb-5 text-center text-brand-blue">包班專用報名表</h2>
                 <div>
                     <label class="block text-sm font-bold text-gray-700">公司名稱 <span class="text-red-500">*</span></label>
                     <input type="text" id="companyName" required class="w-full p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-brand-gold">
@@ -156,10 +181,6 @@
                 <a href="https://line.me/R/ti/p/@pnb8022i" target="_blank" class="block w-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg py-4 rounded-xl shadow-lg transition-transform transform active:scale-95 text-center">
                     <i class="fab fa-line mr-2"></i> 立即加入 VIS服務中心 Line@
                 </a>
-                
-                <button type="button" id="resetFormBtn" class="text-xs text-gray-400 hover:text-gray-600 underline pt-2">
-                    填寫下一位學員資料
-                </button>
             </div>
 
         </div>
@@ -171,33 +192,17 @@
         <p id="loadingText" class="text-white text-lg font-bold tracking-widest">資料傳送中，請稍候...</p>
     </div>
 
+    <!-- JavaScript 核心邏輯 -->
     <script>
         const MY_LIFF_ID = "2010369571-TdDIfGeN"; 
         const GAS_URL = "https://script.google.com/macros/s/AKfycbxjqrWbYQmOtZ13VAs2mcdexCEsg2K703PfHSCT4aGmDVbn9gQg1EbTXfrhGND1QTZy6Q/exec"; 
 
         window.userLineId = "未取得";
 
-        // 1. 初始化 LIFF 取得 LineID 與頭像
-        async function initializeLiff() {
-            try {
-                await liff.init({ liffId: MY_LIFF_ID });
-                if (liff.isLoggedIn()) {
-                    const profile = await liff.getProfile();
-                    window.userLineId = profile.userId;
-                    
-                    document.getElementById('profileBox').classList.remove('hidden');
-                    document.getElementById('profileImage').src = profile.pictureUrl || 'https://via.placeholder.com/150';
-                    document.getElementById('profileName').textContent = profile.displayName;
-                    document.getElementById('name').value = profile.displayName; // 預填姓名
-                } else {
-                    liff.login(); 
-                }
-            } catch (err) {
-                console.warn("LIFF 初始化提示:", err.message);
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
+            const agreeCheckbox = document.getElementById('agreeCheckbox');
+            const startAuthBtn = document.getElementById('startAuthBtn');
+            const stepPdpa = document.getElementById('step-pdpa');
             const form = document.getElementById('corpForm');
             const stepConfirm = document.getElementById('step-confirm');
             const stepSuccessInvite = document.getElementById('step-success-invite');
@@ -207,7 +212,54 @@
             
             let finalDataToSubmit = {};
 
-            // 攔截表單送出，進入確認畫面
+            // 1. 勾選同意個資法後，解鎖按鈕
+            agreeCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    startAuthBtn.disabled = false;
+                    startAuthBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
+                    startAuthBtn.classList.add('bg-brand-blue', 'text-white', 'hover:bg-blue-900');
+                } else {
+                    startAuthBtn.disabled = true;
+                    startAuthBtn.classList.add('bg-gray-300', 'text-gray-500', 'cursor-not-allowed');
+                    startAuthBtn.classList.remove('bg-brand-blue', 'text-white', 'hover:bg-blue-900');
+                }
+            });
+
+            // 2. 點擊「同意並授權」後，才初始化 LIFF 取得 LineID 
+            startAuthBtn.addEventListener('click', async () => {
+                startAuthBtn.disabled = true;
+                startAuthBtn.textContent = "正在取得 LINE 授權...";
+
+                try {
+                    await liff.init({ liffId: MY_LIFF_ID });
+                    
+                    if (liff.isLoggedIn()) {
+                        const profile = await liff.getProfile();
+                        window.userLineId = profile.userId;
+                        
+                        // 顯示個人資訊
+                        document.getElementById('profileBox').classList.remove('hidden');
+                        document.getElementById('profileImage').src = profile.pictureUrl || 'https://via.placeholder.com/150';
+                        document.getElementById('profileName').textContent = profile.displayName;
+                        document.getElementById('name').value = profile.displayName; // 預填真實姓名
+                    } else {
+                        liff.login(); // 若未登入，引導登入
+                        return;
+                    }
+
+                    // 授權成功，切換至正式填寫表單
+                    stepPdpa.classList.add('hidden');
+                    form.classList.remove('hidden');
+
+                } catch (err) {
+                    console.error("LIFF 授權失敗:", err);
+                    alert("LINE 授權發生異常：" + err.message);
+                    startAuthBtn.disabled = false;
+                    startAuthBtn.textContent = "同意並授權，開始填寫報名表";
+                }
+            });
+
+            // 3. 攔截表單送出，進入確認畫面
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
@@ -223,7 +275,7 @@
                 if (!/^\d{10}$/.test(phone)) return alert("手機格式錯誤：必須為10碼數字");
                 if (!email.includes('@')) return alert("Email 格式錯誤");
 
-                // 將驗證過的資料與 lineId 存入全域變數[cite: 13]
+                // 將資料與取得的 lineId 存入全域變數
                 finalDataToSubmit = { 
                     lineId: window.userLineId,
                     companyName, 
@@ -242,7 +294,6 @@
                 document.getElementById('confirm-email').textContent = email;
                 document.getElementById('confirm-question').textContent = question || "(未填寫)";
 
-                // 切換畫面：隱藏表單，顯示確認區塊
                 form.classList.add('hidden');
                 stepConfirm.classList.remove('hidden');
             });
@@ -253,7 +304,7 @@
                 form.classList.remove('hidden');
             });
 
-            // 最終確認送出邏輯 (發送至 GAS，成功後顯示 Line@ 邀請畫面)
+            // 4. 最終確認送出邏輯 (發送至 GAS，成功後顯示 Line@ 邀請畫面)
             finalSubmitBtn.addEventListener('click', async () => {
                 finalSubmitBtn.disabled = true;
                 backToEditBtn.disabled = true;
@@ -272,7 +323,6 @@
                     loadingOverlay.classList.add('hidden');
                     loadingOverlay.classList.remove('flex');
                     
-                    // 隱藏確認區塊，顯示 Line@ 邀請畫面
                     stepConfirm.classList.add('hidden');
                     stepSuccessInvite.classList.remove('hidden');
                     
@@ -284,17 +334,7 @@
                     backToEditBtn.disabled = false;
                 }
             });
-
-            // 重新填寫按鈕邏輯
-            document.getElementById('resetFormBtn').addEventListener('click', () => {
-                form.reset();
-                stepSuccessInvite.classList.add('hidden');
-                form.classList.remove('hidden');
-            });
         });
-
-        // 頁面載入時啟動 LIFF
-        window.onload = initializeLiff;
     </script>
 </body>
 </html>
