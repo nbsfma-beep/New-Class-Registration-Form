@@ -52,7 +52,7 @@
         </div>
     </header>
 
-    <div class="max-w-md mx-auto p-5">
+    <div class="max-w-2xl mx-auto p-5">
         
         <!-- 課程說明圖片區塊 -->
         <div class="mb-6 rounded-2xl shadow-xl overflow-hidden border-4 border-white">
@@ -199,7 +199,7 @@
 
         window.userLineId = "未取得";
 
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             const agreeCheckbox = document.getElementById('agreeCheckbox');
             const startAuthBtn = document.getElementById('startAuthBtn');
             const stepPdpa = document.getElementById('step-pdpa');
@@ -212,7 +212,24 @@
             
             let finalDataToSubmit = {};
 
-            // 1. 勾選同意個資法後，解鎖按鈕
+            // 🌟 1. 頁面載入時，先在背景安靜初始化 LIFF
+            try {
+                await liff.init({ liffId: MY_LIFF_ID });
+                if (liff.isLoggedIn()) {
+                    // 如果使用者之前已經授權登入過了，直接抓取資料並存起來！
+                    const profile = await liff.getProfile();
+                    window.userLineId = profile.userId;
+                    
+                    document.getElementById('profileBox').classList.remove('hidden');
+                    document.getElementById('profileImage').src = profile.pictureUrl || 'https://via.placeholder.com/150';
+                    document.getElementById('profileName').textContent = profile.displayName;
+                    document.getElementById('name').value = profile.displayName; 
+                }
+            } catch (err) {
+                console.warn("LIFF 背景初始化提示:", err.message);
+            }
+
+            // 2. 勾選同意個資法後，解鎖按鈕
             agreeCheckbox.addEventListener('change', function() {
                 if (this.checked) {
                     startAuthBtn.disabled = false;
@@ -225,41 +242,25 @@
                 }
             });
 
-            // 2. 點擊「同意並授權」後，才初始化 LIFF 取得 LineID 
+            // 3. 點擊「同意並授權」後的行為
             startAuthBtn.addEventListener('click', async () => {
-                startAuthBtn.disabled = true;
-                startAuthBtn.textContent = "正在取得 LINE 授權...";
-
-                try {
-                    await liff.init({ liffId: MY_LIFF_ID });
-                    
-                    if (liff.isLoggedIn()) {
-                        const profile = await liff.getProfile();
-                        window.userLineId = profile.userId;
-                        
-                        // 顯示個人資訊
-                        document.getElementById('profileBox').classList.remove('hidden');
-                        document.getElementById('profileImage').src = profile.pictureUrl || 'https://via.placeholder.com/150';
-                        document.getElementById('profileName').textContent = profile.displayName;
-                        document.getElementById('name').value = profile.displayName; // 預填真實姓名
-                    } else {
-                        liff.login(); // 若未登入，引導登入
-                        return;
-                    }
-
-                    // 授權成功，切換至正式填寫表單
+                // 如果背景已經抓到 LineID，就不用再執行 liff.login() 重新導向，直接進入表單！
+                if (window.userLineId && window.userLineId !== "未取得") {
                     stepPdpa.classList.add('hidden');
                     form.classList.remove('hidden');
+                    return;
+                }
 
-                } catch (err) {
-                    console.error("LIFF 授權失敗:", err);
-                    alert("LINE 授權發生異常：" + err.message);
-                    startAuthBtn.disabled = false;
-                    startAuthBtn.textContent = "同意並授權，開始填寫報名表";
+                // 如果還沒登入過，才真正觸發 LINE 登入授權
+                if (!liff.isLoggedIn()) {
+                    liff.login();
+                } else {
+                    stepPdpa.classList.add('hidden');
+                    form.classList.remove('hidden');
                 }
             });
 
-            // 3. 攔截表單送出，進入確認畫面
+            // 4. 攔截表單送出，進入確認畫面
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
@@ -270,12 +271,10 @@
                 const email = document.getElementById('email').value.trim();
                 const question = document.getElementById('question').value.trim();
 
-                // 嚴格格式驗證
                 if (!/^[\u4e00-\u9fa5]+$/.test(name)) return alert("姓名格式錯誤：只能輸入純中文");
                 if (!/^\d{10}$/.test(phone)) return alert("手機格式錯誤：必須為10碼數字");
                 if (!email.includes('@')) return alert("Email 格式錯誤");
 
-                // 將資料與取得的 lineId 存入全域變數
                 finalDataToSubmit = { 
                     lineId: window.userLineId,
                     companyName, 
@@ -286,7 +285,6 @@
                     question 
                 };
 
-                // 填入確認畫面
                 document.getElementById('confirm-companyName').textContent = companyName;
                 document.getElementById('confirm-unitCode').textContent = unitCode;
                 document.getElementById('confirm-name').textContent = name;
@@ -298,13 +296,12 @@
                 stepConfirm.classList.remove('hidden');
             });
 
-            // 返回修改按鈕邏輯
             backToEditBtn.addEventListener('click', () => {
                 stepConfirm.classList.add('hidden');
                 form.classList.remove('hidden');
             });
 
-            // 4. 最終確認送出邏輯 (發送至 GAS，成功後顯示 Line@ 邀請畫面)
+            // 5. 最終確認送出邏輯
             finalSubmitBtn.addEventListener('click', async () => {
                 finalSubmitBtn.disabled = true;
                 backToEditBtn.disabled = true;
