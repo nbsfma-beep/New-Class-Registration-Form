@@ -246,7 +246,17 @@
 
             <!-- 步驟一：正式報名表單 (預設隱藏) -->
             <form id="corpForm" class="hidden space-y-4">
-                <h2 class="text-xl font-bold mb-5 text-center text-brand-blue">包班專用報名表</h2>
+                <h2 class="text-xl font-bold mb-4 text-center text-brand-blue">包班專用報名表</h2>
+                
+                <!-- 👇 新增：上課時間 (固定顯示，置於標題與公司名稱之間) 👇 -->
+                <div class="mb-5">
+                    <label class="block text-sm font-bold text-brand-blue mb-1">上課時間</label>
+                    <div class="w-full p-3 bg-blue-50 border border-blue-200 rounded-lg text-brand-blue font-bold flex items-center gap-2 shadow-sm">
+                        <i class="fas fa-clock text-brand-gold"></i>
+                        <span>09:00-12:00；13:30-16:30</span>
+                    </div>
+                </div>
+
                 <div>
                     <label class="block text-sm font-bold text-gray-700">公司名稱 <span class="text-red-500">*</span></label>
                     <input type="text" id="companyName" required class="w-full p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-brand-gold">
@@ -261,22 +271,21 @@
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700">手機 <span class="text-red-500">*</span></label>
-                    <input type="tel" id="phone" required placeholder="0912345678" class="w-full p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-brand-gold">
+                    <input type="tel" id="phone" required placeholder="例如: 0912345678" class="w-full p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-brand-gold">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700">Email <span class="text-red-500">*</span></label>
-                    <input type="email" id="email" required class="w-full p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-brand-gold">
+                    <input type="email" id="email" required placeholder="請輸入聯絡信箱" class="w-full p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-brand-gold">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700">希望這堂課，能為您解決什麼問題？(選填)</label>
                     <textarea id="question" rows="3" placeholder="請簡述您的期待或遇到的問題" class="w-full p-3 bg-gray-50 border rounded-lg focus:ring-2 focus:ring-brand-gold"></textarea>
                 </div>
                 
-                <button type="submit" id="submitBtn" class="w-full bg-brand-blue hover:bg-blue-900 text-white p-4 rounded-xl font-bold mt-4 transition-all">
+                <button type="submit" id="submitBtn" class="w-full bg-brand-blue hover:bg-blue-900 text-white p-4 rounded-xl font-bold mt-4 transition-all shadow-md">
                     下一步：確認資料
                 </button>
             </form>
-
             <!-- 步驟二：資料確認區塊 (預設隱藏) -->
             <div id="step-confirm" class="hidden space-y-4">
                 <h3 class="font-bold text-brand-blue text-lg mb-2 border-b pb-2">請確認您的報名資料</h3>
