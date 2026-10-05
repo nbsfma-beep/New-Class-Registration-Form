@@ -26,19 +26,14 @@
     </script>
     <style>
         body { font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif; background-color: #f3f4f6; }
-        .hero-bg {
-            background: linear-gradient(135deg, #0A2540 0%, #1a4a7b 100%);
-        }
+        .hero-bg { background: linear-gradient(135deg, #0A2540 0%, #1a4a7b 100%); }
         .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background-color: #F5A623;
-            margin: 12px auto 0;
-            border-radius: 2px;
+            content: ''; display: block; width: 50px; height: 4px;
+            background-color: #F5A623; margin: 12px auto 0; border-radius: 2px;
         }
-        ::-webkit-scrollbar { display: none; }
+        /* 隱藏滾動條但保持滑動功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 
@@ -47,19 +42,171 @@
         <div class="text-brand-gold font-bold tracking-widest text-sm mb-2">不只是賣保單，而是建立長期信任</div>
         <h1 class="text-3xl font-extrabold leading-tight mb-4">財富自我循環<br><span class="text-4xl text-brand-gold">實戰方案</span></h1>
         <p class="text-lg opacity-90 mb-6">學會<strong class="text-yellow-300">成交</strong>的方法，培養<strong class="text-yellow-300">服務</strong>的底氣</p>
-        <div class="inline-block bg-white text-brand-blue font-bold py-2 px-6 rounded-full shadow-md">
-            一套方法 ＋ 一個系統 ＝ 持續成交
-        </div>
+        <div class="inline-block bg-white text-brand-blue font-bold py-2 px-6 rounded-full shadow-md">一套方法 ＋ 一個系統 ＝ 持續成交</div>
     </header>
 
-    <div class="w-full max-w-5xl mx-auto p-4 sm:p-6">
-        
-        <!-- 課程說明圖片區塊 -->
-        <div class="mb-6 rounded-2xl shadow-xl overflow-hidden border-4 border-white">
-            <img src="https://i.postimg.cc/htKjBM0F/course-info.png" alt="財富自我循環實戰方案說明" class="w-full h-auto block">
-        </div>
-        
-        <div class="bg-white p-6 sm:p-10 rounded-2xl shadow-xl border-t-4 border-brand-gold relative overflow-hidden">
+    <div class="w-full max-w-5xl mx-auto p-4 sm:p-6 space-y-8">
+    
+        <!-- 痛點共鳴 -->
+        <section class="py-4 px-2 sm:px-5">
+            <h2 class="text-2xl font-bold text-center text-blue-900 mb-8 section-title">您是否也遇過這些問題？</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-white p-5 rounded-2xl shadow-sm text-center border border-gray-100"><i class="fas fa-question-circle text-red-400 text-3xl mb-2"></i><p class="text-sm font-bold text-gray-700">面對客戶問倒<br>說不清楚價值</p></div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm text-center border border-gray-100"><i class="fas fa-chart-line text-red-400 text-3xl mb-2"></i><p class="text-sm font-bold text-gray-700">市場變化太快<br>無法即時追蹤</p></div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm text-center border border-gray-100"><i class="fas fa-file-contract text-red-400 text-3xl mb-2"></i><p class="text-sm font-bold text-gray-700">投資型保單<br>考照後卻不敢賣</p></div>
+                <div class="bg-white p-5 rounded-2xl shadow-sm text-center border border-gray-100"><i class="fas fa-search-dollar text-red-400 text-3xl mb-2"></i><p class="text-sm font-bold text-gray-700">面對數千檔基金<br>不知如何挑選</p></div>
+            </div>
+        </section>
+
+        <!-- 🌟 解決方案一 (帶圓圈數字 ①，無 SOLUTION) 🌟 -->
+        <section class="bg-white p-6 sm:p-8 rounded-2xl shadow-md border-t-4 border-brand-gold space-y-6">
+            <div class="border-b pb-4">
+                <h2 class="text-2xl font-extrabold text-blue-900 flex items-center gap-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-gold text-brand-blue text-lg font-black shadow-sm">1</span>
+                    <span>解決方案一：財富自我循環銷售力</span>
+                </h2>
+                <p class="text-brand-gold font-bold text-base mt-2">【投資型保單銷售秘笈 - 6小時實體課程】</p>
+                <p class="text-gray-600 text-sm mt-1">從底層邏輯到成交話術，建立一套可以複製的標準化銷售流程。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <h4 class="font-bold text-brand-blue flex items-center gap-2 mb-2">
+                        <i class="fas fa-cubes text-brand-gold"></i> 三大核心模組
+                    </h4>
+                    <ul class="text-xs text-gray-600 space-y-2">
+                        <li>• <strong>觀念架構篇</strong>：破除理財迷思，導入自我循環概念。</li>
+                        <li>• <strong>策略落地篇</strong>：三大水庫配比配置，兼顧保障與現金流。</li>
+                        <li>• <strong>成交實戰篇</strong>：高資產客戶對談範本與反對問題處理。</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <h4 class="font-bold text-brand-blue flex items-center gap-2 mb-2">
+                        <i class="fas fa-fire text-brand-gold"></i> 課程實戰亮點
+                    </h4>
+                    <ul class="text-xs text-gray-600 space-y-2">
+                        <li>• <strong>情境式演練</strong>：真實案例剖析，下課即可直接對話客戶。</li>
+                        <li>• <strong>工具箱交付</strong>：提供業務專用視覺圖卡與解說工具手冊。</li>
+                        <li>• <strong>課後諮詢</strong>：專屬討論社群，講師團隊即時答疑解惑。</li>
+                    </ul>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-xl border border-gray-200">
+                    <h4 class="font-bold text-brand-blue flex items-center gap-2 mb-2">
+                        <i class="fas fa-check-circle text-brand-gold"></i> 徹底解決痛點
+                    </h4>
+                    <ul class="text-xs text-gray-600 space-y-2">
+                        <li>• 擺脫只談報酬率與宣告利率的削價競爭困局。</li>
+                        <li>• 讓客戶看懂一生現金流架構，大幅提高成交額度與轉介率。</li>
+                        <li>• 建立專業顧問形象，擺脫單純商品推銷員的標籤。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 解決方案二 (帶圓圈數字 ②，無 SOLUTION) 🌟 -->
+        <section class="bg-white p-6 sm:p-8 rounded-2xl shadow-md border-t-4 border-green-600 space-y-6">
+            <div class="border-b pb-4">
+                <h2 class="text-2xl font-extrabold text-blue-900 flex items-center gap-2">
+                    <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-green-600 text-white text-lg font-black shadow-sm">2</span>
+                    <span>解決方案二：基金管理服務力</span>
+                </h2>
+                <p class="text-green-600 font-bold text-base mt-2">【VIS 視覺資訊系統 - 一年進階會員資格】</p>
+                <p class="text-gray-600 text-sm mt-1">將繁雜數據轉化為直覺圖表，讓服務客戶變得輕鬆、專業、有說服力。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-green-50/50 p-5 rounded-xl border border-green-100">
+                    <h4 class="font-bold text-green-800 text-base mb-3 flex items-center gap-2">
+                        <i class="fas fa-chart-pie text-green-600"></i> 三大功能維度
+                    </h4>
+                    <ul class="text-xs sm:text-sm text-gray-700 space-y-2.5">
+                        <li><strong>1. 總經趨勢儀表板</strong>：快速掌握全球貨幣政策、利率循環與通膨脈動。</li>
+                        <li><strong>2. 基金篩選導航器</strong>：多維度指標量化評估，數千檔標的輕鬆去蕪存菁。</li>
+                        <li><strong>3. 投組體質健康診斷</strong>：一鍵產出客製化報告，售後追蹤與再平衡更省心。</li>
+                    </ul>
+                </div>
+                <div class="bg-green-50/50 p-5 rounded-xl border border-green-100">
+                    <h4 class="font-bold text-green-800 text-base mb-3 flex items-center gap-2">
+                        <i class="fas fa-shield-alt text-green-600"></i> 四大獨家服務
+                    </h4>
+                    <ul class="text-xs sm:text-sm text-gray-700 space-y-2.5">
+                        <li><strong>• 每日晨間焦點</strong>：整合開盤前必讀重點，提供市場開話談資。</li>
+                        <li><strong>• 每週專題深度解析</strong>：剖析主流熱門標的背後邏輯與資金流向。</li>
+                        <li><strong>• 每月線上研討會</strong>：總經講師線上連線，解析最新局勢與答疑。</li>
+                        <li><strong>• 會員專屬行動服務系統</strong>：透過手機隨時隨地查閱數據與客製圖表。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🌟 8 張課程說明圖片：自適應滿版橫向輪播 🌟 -->
+        <section class="relative max-w-full">
+            <div class="flex items-center justify-between text-xs text-gray-500 font-bold mb-2 px-1">
+                <span><i class="fas fa-images mr-1 text-brand-gold"></i> 專案介紹</span>
+                <span class="text-brand-blue font-bold" id="pageIndicatorText">1 / 8 頁</span>
+            </div>
+            
+            <!-- 輪播主體與左右箭頭的相對定位容器 -->
+            <div class="relative group">
+                <!-- 左箭頭 -->
+                <button type="button" id="prevBtn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all shadow-md focus:outline-none">
+                    <i class="fas fa-chevron-left text-lg"></i>
+                </button>
+
+                <!-- 橫向滑動容器：加入 scroll-smooth 讓點擊滑動更平滑 -->
+                <div id="imageCarousel" class="flex overflow-x-auto space-x-3 no-scrollbar snap-x snap-mandatory rounded-2xl scroll-smooth" style="-webkit-overflow-scrolling: touch;">
+                    <!-- 專案介紹 1 -->
+                    <div class="w-full flex-shrink-0 snap-center rounded-2xl shadow-md overflow-hidden bg-white border border-gray-100">
+                        <img src="財富自我循環專案介紹1.png" alt="財富自我循環專案介紹 1" class="w-full h-auto block" loading="lazy">
+                    </div>
+                    <!-- 專案介紹 2 -->
+                    <div class="w-full flex-shrink-0 snap-center rounded-2xl shadow-md overflow-hidden bg-white border border-gray-100">
+                        <img src="財富自我循環專案介紹2.png" alt="財富自我循環專案介紹 2" class="w-full h-auto block" loading="lazy">
+                    </div>
+                    <!-- 專案介紹 3 -->
+                    <div class="w-full flex-shrink-0 snap-center rounded-2xl shadow-md overflow-hidden bg-white border border-gray-100">
+                        <img src="財富自我循環專案介紹3.png" alt="財富自我循環專案介紹 3" class="w-full h-auto block" loading="lazy">
+                    </div>
+                    <!-- 專案介紹 4 -->
+                    <div class="w-full flex-shrink-0 snap-center rounded-2xl shadow-md overflow-hidden bg-white border border-gray-100">
+                        <img src="財富自我循環專案介紹4.png" alt="財富自我循環專案介紹 4" class="w-full h-auto block" loading="lazy">
+                    </div>
+                    <!-- 專案介紹 5 -->
+                    <div class="w-full flex-shrink-0 snap-center rounded-2xl shadow-md overflow-hidden bg-white border border-gray-100">
+                        <img src="財富自我循環專案介紹5.png" alt="財富自我循環專案介紹 5" class="w-full h-auto block" loading="lazy">
+                    </div>
+                    <!-- 專案介紹 6 -->
+                    <div class="w-full flex-shrink-0 snap-center rounded-2xl shadow-md overflow-hidden bg-white border border-gray-100">
+                        <img src="財富自我循環專案介紹6.png" alt="財富自我循環專案介紹 6" class="w-full h-auto block" loading="lazy">
+                    </div>
+                    <!-- 專案介紹 7 -->
+                    <div class="w-full flex-shrink-0 snap-center rounded-2xl shadow-md overflow-hidden bg-white border border-gray-100">
+                        <img src="財富自我循環專案介紹7.png" alt="財富自我循環專案介紹 7" class="w-full h-auto block" loading="lazy">
+                    </div>
+                    <!-- 專案介紹 8 -->
+                    <div class="w-full flex-shrink-0 snap-center rounded-2xl shadow-md overflow-hidden bg-white border border-gray-100">
+                        <img src="財富自我循環專案介紹8.png" alt="財富自我循環專案介紹 8" class="w-full h-auto block" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- 右箭頭 -->
+                <button type="button" id="nextBtn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/70 text-white w-10 h-10 rounded-full flex items-center justify-center z-10 transition-all shadow-md focus:outline-none">
+                    <i class="fas fa-chevron-right text-lg"></i>
+                </button>
+            </div>
+
+            <!-- 下方進度指示 Bar -->
+            <div class="flex justify-center gap-2 mt-4" id="carouselDots">
+                <button type="button" class="dot w-6 h-2 rounded-full bg-brand-gold transition-all duration-300" data-index="0"></button>
+                <button type="button" class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="1"></button>
+                <button type="button" class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="2"></button>
+                <button type="button" class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="3"></button>
+                <button type="button" class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="4"></button>
+                <button type="button" class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="5"></button>
+                <button type="button" class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="6"></button>
+                <button type="button" class="dot w-2 h-2 rounded-full bg-gray-300 transition-all duration-300" data-index="7"></button>
+            </div>
+        </section>
             
             <!-- 使用者 LINE 資訊預覽 (取得資料後顯示) -->
             <div id="profileBox" class="hidden flex items-center gap-4 bg-gray-50 p-4 rounded-xl mb-6">
@@ -200,6 +347,52 @@
         window.userLineId = "未取得";
 
         document.addEventListener('DOMContentLoaded', async () => {
+            // 👇 新增：箭頭與下方進度 Bar 控制邏輯 👇
+            const carousel = document.getElementById('imageCarousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dots = document.querySelectorAll('.dot');
+            const pageIndicatorText = document.getElementById('pageIndicatorText');
+            const totalImages = 8;
+
+            // 更新指示點與文字狀態
+            const updateDots = (index) => {
+                dots.forEach((dot, i) => {
+                    if (i === index) {
+                        dot.classList.replace('w-2', 'w-6');
+                        dot.classList.replace('bg-gray-300', 'bg-brand-gold');
+                    } else {
+                        dot.classList.replace('w-6', 'w-2');
+                        dot.classList.replace('bg-brand-gold', 'bg-gray-300');
+                    }
+                });
+                pageIndicatorText.textContent = `${index + 1} / ${totalImages} 頁`;
+            };
+
+            // 監聽滑動事件來連動更新下方 Bar
+            carousel.addEventListener('scroll', () => {
+                const scrollPosition = carousel.scrollLeft;
+                const index = Math.round(scrollPosition / carousel.offsetWidth);
+                updateDots(index);
+            });
+
+            // 點擊左箭頭
+            prevBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: -carousel.offsetWidth, behavior: 'smooth' });
+            });
+
+            // 點擊右箭頭
+            nextBtn.addEventListener('click', () => {
+                carousel.scrollBy({ left: carousel.offsetWidth, behavior: 'smooth' });
+            });
+
+            // 點擊下方特定進度 Bar，直接跳到該頁
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    carousel.scrollTo({ left: index * carousel.offsetWidth, behavior: 'smooth' });
+                });
+            });
+            // 👆 新增結束 👆
             const agreeCheckbox = document.getElementById('agreeCheckbox');
             const startAuthBtn = document.getElementById('startAuthBtn');
             const stepPdpa = document.getElementById('step-pdpa');
